@@ -1,15 +1,7 @@
-name: Hexo Auto Deploy Git Official Token Rule
+name: Hexo Auto Deploy Git
 on:
   push:
     branches: [ main ]
-
-# 允许工作流使用写权限推送
-permissions:
-  contents: write
-
-# 全局注入环境变量，插件初始化时就能读取
-env:
-  GH_TOKEN: ${{ secrets.HEXO_TOKEN }}
 
 jobs:
   build-deploy:
@@ -21,32 +13,28 @@ jobs:
           fetch-depth: 0
           submodules: recursive
 
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
 
-      - name: Install dependencies
+      - name: Install npm dependencies
         run: npm install
 
-      - name: Set git user info
+      - name: Config git identity
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@github.com"
 
-      - name: Execute hexo clean + generate
+      # 核心修复：拼接带 PAT 的仓库地址，注入环境变量给 hexo 读取
+      - name: Hexo generate & deploy
+        env:
+          GH_PAT: ${{ secrets.HEXO_TOKEN }}
+          # 拼接鉴权仓库地址
+          DEPLOY_REPO: https://${{ secrets.HEXO_TOKEN }}@github.com/Othixx/my-blog.git
         run: |
           npx hexo clean
           npx hexo generate
-
-      - name: Set repo remote to use token
-        # 关键步骤：把 origin 改为含 token 的 HTTPS URL，供后续 hexo-deployer-git 使用
-        run: |
-          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git
-
-      - name: Deploy (hexo)
-        run: |
-          echo "===== hexo deploy 开始 ====="
-          npx hexo deploy
-          echo "===== hexo deploy 完成 ====="
+          # 临时覆盖部署仓库地址，强制使用带token的链接
+          npx hexo deploy --config <(echo "deploy: {type: git, repo: $DEPLOY_REPO, branch: master}")
