@@ -1,4 +1,4 @@
-name: Hexo Auto Deploy Git
+name: Hexo Auto Deploy Git Force Run Deploy
 on:
   push:
     branches: [ main ]
@@ -13,13 +13,13 @@ jobs:
           fetch-depth: 0
           submodules: recursive
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
 
-      - name: Install npm dependencies
+      - name: Install dependencies
         run: npm install
 
       - name: Config git identity
@@ -27,14 +27,30 @@ jobs:
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@github.com"
 
-      # 核心修复：拼接带 PAT 的仓库地址，注入环境变量给 hexo 读取
-      - name: Hexo generate & deploy
+      # 完全不用 EOF，单行echo逐行写入临时配置
+      - name: Rewrite deploy config without EOF
         env:
-          GH_PAT: ${{ secrets.HEXO_TOKEN }}
-          # 拼接鉴权仓库地址
-          DEPLOY_REPO: https://${{ secrets.HEXO_TOKEN }}@github.com/Othixx/my-blog.git
+          HEXO_PAT: ${{ secrets.HEXO_TOKEN }}
         run: |
+          AUTH_URL="https://${HEXO_PAT}@github.com/Othixx/my-blog.git"
+          rm -f deploy.tmp
+          echo "deploy:" >> deploy.tmp
+          echo "  type: git" >> deploy.tmp
+          echo "  repo: ${AUTH_URL}" >> deploy.tmp
+          echo "  branch: master" >> deploy.tmp
+          echo "  message: Auto update by GitHub Actions" >> deploy.tmp
+          # 删除原有旧deploy配置块
+          sed -i '/^deploy:/,/^[^ ]/d' _config.yml
+          # 追加新配置
+          cat deploy.tmp >> _config.yml
+          rm deploy.tmp
+
+      - name: Run full hexo pipeline
+        run: |
+          echo "==== hexo clean start ===="
           npx hexo clean
+          echo "==== hexo generate start ===="
           npx hexo generate
-          # 临时覆盖部署仓库地址，强制使用带token的链接
-          npx hexo deploy --config <(echo "deploy: {type: git, repo: $DEPLOY_REPO, branch: master}")
+          echo "==== hexo deploy start ===="
+          npx hexo deploy
+          echo "==== hexo deploy finished ===="
