@@ -7,34 +7,41 @@ jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
+      # 拉取博客源码
       - name: Checkout blog source
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
           submodules: recursive
 
+      # Node 环境
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
 
+      # 安装依赖
       - name: Install npm dependencies
         run: npm install
 
+      # 配置提交用户名邮箱
       - name: Config git identity
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@github.com"
 
-      # 核心修复：拼接带 PAT 的仓库地址，注入环境变量给 hexo 读取
-      - name: Hexo generate & deploy
+      # 核心修复：替换git远程地址为带PAT鉴权链接
+      - name: Hexo build & deploy
         env:
-          GH_PAT: ${{ secrets.HEXO_TOKEN }}
-          # 拼接鉴权仓库地址
-          DEPLOY_REPO: https://${{ secrets.HEXO_TOKEN }}@github.com/Othixx/my-blog.git
+          GH_TOKEN: ${{ secrets.HEXO_TOKEN }}
         run: |
+          # 拼接带鉴权的仓库地址
+          AUTH_REPO="https://${GH_TOKEN}@github.com/Othixx/my-blog.git"
+          # 临时覆盖git remote origin，所有git操作自动携带token
+          git remote set-url origin "${AUTH_REPO}"
+
+          # 标准完整流程，日志会完整打印clean/generate/deploy三步
           npx hexo clean
           npx hexo generate
-          # 临时覆盖部署仓库地址，强制使用带token的链接
-          npx hexo deploy --config <(echo "deploy: {type: git, repo: $DEPLOY_REPO, branch: master}")
+          npx hexo deploy
