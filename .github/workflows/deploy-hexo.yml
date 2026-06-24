@@ -25,23 +25,20 @@ jobs:
       - name: Install npm dependencies
         run: npm install
 
-      # 配置提交用户名邮箱
-      - name: Config git identity
+      # 配置git提交身份
+      - name: Config git user
         run: |
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@github.com"
 
-      # 核心修复：替换git远程地址为带PAT鉴权链接
-      - name: Hexo build & deploy
+      # 构建+部署，注入GH_TOKEN给hexo配置读取
+      - name: Hexo Build & Deploy
         env:
           GH_TOKEN: ${{ secrets.HEXO_TOKEN }}
         run: |
-          # 拼接带鉴权的仓库地址
-          AUTH_REPO="https://${GH_TOKEN}@github.com/Othixx/my-blog.git"
-          # 临时覆盖git remote origin，所有git操作自动携带token
-          git remote set-url origin "${AUTH_REPO}"
-
-          # 标准完整流程，日志会完整打印clean/generate/deploy三步
           npx hexo clean
+          echo "===== 开始生成静态文件 ====="
           npx hexo generate
+          echo "===== 开始执行deploy推送 ====="
           npx hexo deploy
+          echo "===== deploy执行完成 ====="
