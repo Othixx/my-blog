@@ -104,3 +104,5 @@ deploy:
   type: git
   repo: https://github.com/Othixx/my-blog.git
   branch: master
+  token: $GITHUB_TOKEN
+  message: "Site updated by GitHub Actions: {{ now('YYYY-MM-DD HH:mm:ss') }}"
