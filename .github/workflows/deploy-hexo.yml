@@ -1,0 +1,42 @@
+name: Hexo Auto Deploy Git
+on:
+  push:
+    branches: [ main ] # 你的博客源码主分支，同步笔记后会触发
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 拉取博客完整源码（包含主题子模块）
+      - name: Checkout blog source
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          submodules: recursive
+
+      # 配置 Node.js
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # 安装全部依赖（含 hexo-deployer-git）
+      - name: Install npm dependencies
+        run: npm install
+
+      # 配置 Git 用户信息，用于 hexo 提交静态文件
+      - name: Config git identity
+        run: |
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@github.com"
+
+      # 构建 + 部署，和本地 hexo d 完全一致
+      - name: Hexo generate & deploy
+        run: |
+          npx hexo clean
+          npx hexo generate
+          npx hexo deploy
+        env:
+          # 传入 GitHub PAT，给 hexo-deployer-git 做推送鉴权
+          GITHUB_TOKEN: ${{ secrets.HEXO_TOKEN }}
