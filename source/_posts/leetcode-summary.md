@@ -1,6 +1,6 @@
 ---
 title: LeetCode 刷题汇总笔记
-date: 2026-06-25 07:46:57
+date: 2026-06-26 04:50:58
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 ---
@@ -3423,6 +3423,14 @@ for (let i = 2; i < MX; i++) {
 这道题20260623首刷。难点在于，你要想到只有质数的平方是特殊数字，然后再想到使用埃式筛去筛，这道题有一些思维量，值得二刷。
 
 ![alt text](../img/LeetCode/image-140.png)
+
+### 9.15.3 LeetCode 2507 使用质因数之和替换后可以取到的最小值
+
+这道题20260626首刷。这个题解法不说，说一下时间复杂度的证明：
+
+![alt text](../img/LeetCode/image-141.png)
+
+![alt text](../img/LeetCode/image-142.png)
 
 # 10 暴力与模拟
 
