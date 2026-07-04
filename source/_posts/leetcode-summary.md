@@ -1,6 +1,6 @@
 ---
 title: LeetCode 刷题汇总笔记
-date: 2026-07-03 07:15:13
+date: 2026-07-04 15:36:38
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 ---
@@ -1867,6 +1867,47 @@ let s = b + '#' + a
 ![alt text](../img/LeetCode/image-144.png)
 
 个人觉得这个题不太好想，把答案看懂也不容易，比较难，推荐二刷。
+
+## 1.21 LeetCode 3035 回文字符串的最大数量
+
+本题20260704首刷，这道题虽然也有贪心思想，但是我认为本题的难点不在贪心，而是你能把字符串遍历的过程给想清楚。我觉得考验的就是你的脑子的逻辑能力，值得二刷。
+
+![alt text](../img/LeetCode/image-148.png)
+
+上图的提示1和提示2我都想到了，至于提示3，我想还是看下面的代码比较好搞懂：
+
+```javascript
+/**
+ * @param {string[]} words
+ * @return {number}
+ */
+var maxPalindromesAfterOperations = function (words) {
+  // 统计每个字母出现的次数
+  const map = new Map()
+  for (const word of words) {
+    for (let i = 0; i < word.length; i++) {
+      if (map.has(word[i])) map.set(word[i], map.get(word[i]) + 1)
+      else map.set(word[i], 1)
+    }
+  }
+  // 字母必须成对，如果不成对就在总的双数可用字母上减1
+  let tot = 0
+  for (const [key, value] of map) {
+    tot += value
+    if (value % 2 !== 0) tot--
+  }
+  // 将words按照单词长度从小到大排序，贪心选择长度最小的
+  words.sort((a, b) => a.length - b.length)
+  let ans = 0
+  for (const word of words) {
+    const temp = word.length % 2 === 1 ? word.length - 1 : word.length // 当前单词所需的成对字母数量
+    tot -= temp
+    if (tot < 0) break
+    ans++
+  }
+  return ans
+}
+```
 
 # 2. 链表
 
