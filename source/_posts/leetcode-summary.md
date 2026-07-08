@@ -1,6 +1,6 @@
 ---
 title: LeetCode 刷题汇总笔记
-date: 2026-07-04 15:36:38
+date: 2026-07-08 10:13:17
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 ---
@@ -3502,6 +3502,16 @@ for (let i = 2; i < MX; i++) {
 ![alt text](../img/LeetCode/image-141.png)
 
 ![alt text](../img/LeetCode/image-142.png)
+
+## 9.16 LeetCode 3443 K次修改后的最大曼哈顿距离
+
+这道题20260708首刷，基本上是一个纯数学的思想。我们给出解法：
+
+![alt text](../img/LeetCode/image-149.png)
+
+![alt text](../img/LeetCode/image-150.png)
+
+请注意，我们在遍历的过程中，每次往后移动一个字符，就要检验一下是不是当前可成为最大值。
 
 # 10 暴力与模拟
 
