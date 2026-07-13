@@ -1,6 +1,6 @@
 ---
 title: LeetCode 刷题汇总笔记
-date: 2026-07-08 10:13:17
+date: 2026-07-13 07:36:29
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 ---
@@ -1741,6 +1741,12 @@ var countTriplets = function (arr) {
   return ans
 }
 ```
+
+### 1.13.4 LeetCode 1546 和为目标值且不重叠的非空字数组的最大数目
+
+这道题20260713首刷，仍旧是“枚举右，维护左”的思想。
+
+![alt text](../img/LeetCode/image-151.png)
 
 ## 1.14 LeetCode 41 缺失的第一个正数
 
