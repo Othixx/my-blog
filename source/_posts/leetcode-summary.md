@@ -1,6 +1,6 @@
 ---
 title: LeetCode 刷题汇总笔记
-date: 2026-07-13 07:36:29
+date: 2026-07-14 01:58:57
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 ---
@@ -3986,6 +3986,12 @@ var rob = function (root) {
 这道题20260529首刷，我也说不出这题难在哪，好像看了题解就秒懂，但是自己做没有做出来。值得二刷。
 
 ![alt text](../img/LeetCode/image-128.png)
+
+## 12.18 LeetCode 1269 停在原地的方案数
+
+这道题20260714首刷，和上面2008那个题很像，也是属于你想到了动态规划，这个题就很好解，想不到就做不出。给出题解：
+
+![alt text](../img/LeetCode/image-152.png)
 
 # 13 复杂数据结构
 
