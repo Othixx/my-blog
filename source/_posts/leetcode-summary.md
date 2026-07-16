@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-07-15 13:18:00
+updated: 2026-07-16 13:24:50
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -89,6 +89,8 @@ $$(a-b)\bmod m=\big((a \bmod m)-(b \bmod m)+m\big)\bmod m$$
 至于如何去求gcd，我们采用欧几里得辗转相除法：
 
 $gcd(a,b) = gcd(b,a \bmod b)$
+
+另外，我们要知道欧几里得算法的时间复杂度为$O(\log \min(a, b))$，证明比较复杂，因此我们略去。
 
 ## 关于LeetCode的一些执行机制
 
