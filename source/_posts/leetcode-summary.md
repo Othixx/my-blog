@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-07-16 15:11:06
+updated: 2026-07-16 15:18:09
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -60,9 +60,9 @@ description: Othixx的算法指南
 
 我们需要知道，关于加法和乘法运算是满足模运算的分配律的：
 
-加法：$(a + b) \bmod p = (a \bmod p + b \bmod p) \bmod p$
+加法：$$(a + b) \bmod p = (a \bmod p + b \bmod p) \bmod p$$
 
-乘法：$(a \times b) \bmod p = (a \bmod p \times b \bmod p) \bmod p$
+乘法：$$(a \times b) \bmod p = (a \bmod p \times b \bmod p) \bmod p$$
 
 ### 负数、减法的模运算
 
@@ -3752,7 +3752,7 @@ $$dfs(i, c) = dfs(i - 1, c) + dfs(i - 1, c - nums[i])$$
 
 用一个dp数组记忆化存储，便加速了整个过程。**为了方便代码实现，我们把状态转移方程中的i加了1。** 完整代码参考力扣。
 
-转移方程变成了$dfs(i + 1, c) = dfs(i, c) + dfs(i, c - nums[i])$。但这里我有个问题至始至终都不太清楚，那就是，**为什么后面的`nums[i]`不需要将i加1？**
+转移方程变成了$$dfs(i + 1, c) = dfs(i, c) + dfs(i, c - nums[i])$$。但这里我有个问题至始至终都不太清楚，那就是，**为什么后面的`nums[i]`不需要将i加1？**
 
 接着，把思路变为递推。难点在于，怎样理解初始化？`dp[0][0] = 1;` 意思就是，当我们没有任何元素时，背包和为0的方案数为1。这个初始化是很巧妙的，需要多揣摩。
 
