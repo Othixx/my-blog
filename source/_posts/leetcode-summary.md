@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-07-16 13:24:50
+updated: 2026-07-16 15:11:06
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -3170,7 +3170,7 @@ function bitCount32(n) {
 
 在计算机中，数字使用补码来存储和计算，实际上，把一个数按位取反，再加1，得到的数在计算机中的存储形式和它本身的相反数是一致的。我们看上面的图片中的例子，不难发现`s & ((~s) + 1)`可以得到lowbit，根据刚才说的结论，我们可以进一步化简成
 
-$$lowbit = s \mathbin{\&} -s$$
+$$lowbit = s \mathbin{\land} -s$$
 
 这是一个非常重要的结论。
 
@@ -3297,7 +3297,7 @@ var minFlips = function (a, b, c) {
 
 这道题20260403首刷，其实就是一个结论：
 
-$$ x \mathbin{\&} (y \oplus z) = (x \mathbin{\&} y) \oplus (x \mathbin{\&} z) $$
+$$ x \mathbin{\land} (y \oplus z) = (x \mathbin{\land} y) \oplus (x \mathbin{\land} z) $$
 
 另外，在位运算中证明一个结论，最直接的方法就是把每个数用0和1枚举。因为位运算是按每一位运算，所以我们可以枚举每一位的取值，来证明结论。
 
@@ -3677,9 +3677,9 @@ var maxSubArray = function (nums) {
 
 这道题是爬楼梯+斐波那契额数列的进阶，关键在于理解两个状态转移方程：
 
-$f[i] = (f[i - 1] + f[i - 2] + f[i - 3]) \bmod MOD$
+$$f[i] = (f[i - 1] + f[i - 2] + f[i - 3]) \bmod MOD$$
 
-$g[i] = (g[i - 1] + g[i - 2] + g[i - 3] + g[i - 4]) \bmod MOD$
+$$g[i] = (g[i - 1] + g[i - 2] + g[i - 3] + g[i - 4]) \bmod MOD$$
 
 两个状态转移方程如何理解？
 
@@ -3746,7 +3746,7 @@ var numberOfPaths = function (grid, k) {
 
 这道题参考灵神解法，我们可以把题目变成一个背包问题。接着，参照**选或不选**的思路，我们可以推出状态转移方程：
 
-$dfs(i, c) = dfs(i - 1, c) + dfs(i - 1, c - nums[i])$
+$$dfs(i, c) = dfs(i - 1, c) + dfs(i - 1, c - nums[i])$$
 
 其中i为nums中的第i个元素，c为当前背包的和。
 
