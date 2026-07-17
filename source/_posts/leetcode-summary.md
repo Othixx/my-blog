@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-07-16 15:18:09
+updated: 2026-07-17 09:42:45
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -3996,6 +3996,12 @@ var rob = function (root) {
 这道题20260714首刷，和上面2008那个题很像，也是属于你想到了动态规划，这个题就很好解，想不到就做不出。给出题解：
 
 ![alt text](../img/LeetCode/image-152.png)
+
+## 12.19 LeetCode 2830 销售利润最大化
+
+这道题20260717首刷。仍旧是线性DP，与LeetCode2008题非常类似，主要是思路也很类似。个人认为这道题难在状态的定义上：
+
+![alt text](../img/LeetCode/image-153.png)
 
 # 13 复杂数据结构
 
