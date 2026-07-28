@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-07-25 13:25:38
+updated: 2026-07-28 14:00:03
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -4002,6 +4002,60 @@ var rob = function (root) {
 这道题20260717首刷。仍旧是线性DP，与LeetCode2008题非常类似，主要是思路也很类似。个人认为这道题难在状态的定义上：
 
 ![alt text](../img/LeetCode/image-153.png)
+
+## 12.20 LeetCode 3176 求出最长好子序列I
+
+这道题20260728首刷。为子序列DP，思路不是很难想到，但是思路细节和实现细节都比较多。首先对于思路，我们和LIS一样，可以定义dfs(i, j)表示以nums[i]结尾的有至多j对相邻元素不同的最长子序列长度，但请注意，这个j的维度千万不能够忘记，我一开始没有考虑j，思路就是不完善的。
+
+下面是实现细节，这道题尤其需要注意一些边界问题，直接给出实现代码，会更好理解：
+
+```javascript
+/**
+ * @param {number[]} nums
+ * @param {number} k
+ * @return {number}
+ */
+var maximumLength = function (nums, k) {
+  const n = nums.length
+  // memo[i][j]: 以i结尾，最多j次相邻不同的最长子序列长度
+  const memo = Array.from({ length: n }, () => Array(k + 1).fill(-1))
+  // base case：任意j，第0个元素单独选长度为1
+  for (let j = 0; j <= k; j++) {
+    memo[0][j] = 1
+  }
+
+  const dfs = (i, j) => {
+    if (j < 0) return -Infinity
+    if (memo[i][j] !== -1) return memo[i][j]
+
+    let mx = 1 // 【修复点1：至少可以只选取自身】
+    for (let p = 0; p < i; p++) {
+      if (nums[p] !== nums[i]) {
+        const tmp = dfs(p, j - 1)
+        if (tmp !== -Infinity) mx = Math.max(mx, tmp + 1)
+      } else {
+        const tmp = dfs(p, j)
+        if (tmp !== -Infinity) mx = Math.max(mx, tmp + 1)
+      }
+    }
+    memo[i][j] = mx
+    return mx
+  }
+
+  // 主动计算全部i的状态（更稳妥）
+  for (let i = 0; i < n; i++) {
+    dfs(i, k)
+  }
+
+  let ans = 0
+  for (let i = 0; i < n; i++) {
+    ans = Math.max(ans, memo[i][k])
+  }
+  return ans
+}
+```
+
+这道题出的非常好，非常适合未来二刷。
 
 # 13 复杂数据结构
 
