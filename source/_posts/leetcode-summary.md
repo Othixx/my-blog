@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-08-01 20:38:51
+updated: 2026-08-03 09:50:03
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -3841,6 +3841,16 @@ class Solution:
 ![alt text](../img/LeetCode/image-9.png)
 
 总结来说，状态机DP就是一类股票问题，这类问题关键是怎么样合理定义状态，写出状态转移方程。
+
+### 12.11.3 LeetCode 3196 最大化子数组的总成本
+
+这道题20260803首刷。也是一个状态机DP。其实本质上，状态机DP就是用第二维补齐一维存不下的局部模式信息，并且第一维之间存在着一定的联系。这道题我们看一下解法：
+
+![alt text](../img/LeetCode/image-158.png)
+
+![alt text](../img/LeetCode/image-159.png)
+
+![alt text](../img/LeetCode/image-160.png)
 
 ## 12.12 区间DP
 
