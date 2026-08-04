@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-08-03 09:50:03
+updated: 2026-08-04 16:17:29
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -1918,6 +1918,12 @@ var maxPalindromesAfterOperations = function (words) {
   return ans
 }
 ```
+
+## 1.22 LeetCode 1504 统计全1子矩形
+
+这道题20260804首刷，其实之前做过类似的题，就是把一个二维的矩形压缩到一维。但是做题时没想到：
+
+![alt text](../img/LeetCode/image-161.png)
 
 # 2. 链表
 
