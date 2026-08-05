@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-08-04 16:17:29
+updated: 2026-08-05 11:31:05
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -3528,6 +3528,34 @@ for (let i = 2; i < MX; i++) {
 ![alt text](../img/LeetCode/image-150.png)
 
 请注意，我们在遍历的过程中，每次往后移动一个字符，就要检验一下是不是当前可成为最大值。
+
+## 9.17 LeetCode 1411 给N\*3网格图涂色的方案数
+
+这道题20260805首刷。这就是一个考验思维的数学题：
+
+找规律，列出n=1时的情况
+ABA类型的6个，ABC类型的6个，然后再枚举ABA类型和ABC类型下面能放的有哪些，能发现ABA类型下面可以放3个ABA类型，2个ABC类型，ABC类型下面可以放2个ABA类型，2个ABC类型，根据规律维护n变大时的ABA类型数量和ABC类型数量即可。
+
+```javascript
+/**
+ * @param {number} n
+ * @return {number}
+ */
+var numOfWays = function (n) {
+  const MOD = 10 ** 9 + 7
+  let a = 6,
+    b = 6 // 分别代表当前这一层ABA类型和ABC类型的种类数
+  let ans = 12 // 第一层答案为12
+  for (let i = 2; i <= n; i++) {
+    let na = (a * 3 + b * 2) % MOD
+    let nb = (a * 2 + b * 2) % MOD
+    ans = (a * 5 + b * 4) % MOD
+    a = na
+    b = nb
+  }
+  return ans
+}
+```
 
 # 10 暴力与模拟
 
