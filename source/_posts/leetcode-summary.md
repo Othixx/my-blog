@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-08-05 11:31:05
+updated: 2026-08-06 10:54:26
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -3556,6 +3556,12 @@ var numOfWays = function (n) {
   return ans
 }
 ```
+
+## 9.18 LeetCode 2311 小于等于K的最长二进制子序列
+
+这道题20260806首刷，是一道脑筋急转弯问题，思路见下，还得多练：
+
+![alt text](../img/LeetCode/image-162.png)
 
 # 10 暴力与模拟
 
