@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-08-07 10:24:48
+updated: 2026-08-10 10:29:26
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -706,6 +706,8 @@ JS中的性能优化有很多种办法。在刷算法题的过程中，我们可
 
 - **尽量不要使用`undefined`：** 在JavaScript中，`undefined`是一个特殊的值，它表示一个变量未被赋值。使用`undefined`会导致代码的可读性和性能下降。应当尽量避免使用它，如果需要判断一个变量是否被赋值，可以使用`null`或其他合适的值来代替。
 
+另外关于`null`，有的时候我们会灵活运用这个值，用它往往来标记不合法的状态。
+
 ## 0.11 JS求一个数组的最大值或最小值
 
 ```javascript
@@ -919,6 +921,31 @@ let bigInt = 12345678901234567890n
 let num = Number(bigInt) // 转换为普通数字
 console.log(num) // 输出: 12345678901234567000（可能会丢失精度）
 ```
+
+### 0.21.1 比较两个字符串形式的大数的大小
+
+在学习了BigInt后，我们要知道可以直接用BigInt来解决这样的问题，这么做操作，浏览器的现代引擎也一般很聪明，它会采用如下的方式来实现：
+
+![alt text](../img/LeetCode/image-164.png)
+
+然而在实际上，这种比较的效率往往比不上我们手写类似下面的比较函数：
+
+```javascript
+const compareStr = (str1, str2) => {
+  // 返回字典序更大的那个str
+  if (str1.length > str2.length) return str1
+  else if (str1.length < str2.length) return str2
+  else {
+    for (let i = 0; i < str1.length; i++) {
+      if (str1[i] > str2[i]) return str1
+      else if (str1[i] < str2[i]) return str2
+    }
+  }
+  return str1
+}
+```
+
+那是因为，引擎在把字符串装进BigInt的时候，JS 引擎需要在底层分配内存，并将十进制字符串解析、转换为内部的二进制大数表示。这个进制转换和对象创建的过程非常“重”。所以，我们知道了未来比较两个大数字符串的大小时，使用手写比较函数的方式是最快的。
 
 ## 0.22 JS 空值合并运算符
 
@@ -3898,6 +3925,10 @@ class Solution:
 
 ![alt text](../img/LeetCode/image-160.png)
 
+### 12.11.4 LeetCode 1363 形成三的最大倍数
+
+这道题20260809首刷，状态机DP不是这个题的难点，在于这个题我们需要想到null的灵活使用，以及两个大字符串比较大小的时候，不要直接使用BigInt，而是应该手写比较函数，会来的更快更合理。本题是一道名副其实的hard题，考察了多个知识点的综合，值得二刷。
+
 ## 12.12 区间DP
 
 一般的线性DP，我们是在数组的前缀或者后缀进行转移的。而这一类区间DP，我们会把问题的规模缩小到数组中间的区间上，不仅仅是前缀或者后缀了。
@@ -4140,6 +4171,16 @@ var maximumLength = function (nums, k) {
 ![alt text](../img/LeetCode/image-157.png)
 
 只能说，这样的题目实在是太巧妙了。推得了状态转移方程之后，本题在实现上没有其他难度，也就迎刃而解了。本题非常值得二刷。
+
+### 12.21.2 LeetCode 1510 石子游戏IV
+
+这道题20260810首刷。在有了一定的题量积累之后，我开始在想博弈DP的状态和子问题应该怎么去定义。
+
+![alt text](../img/LeetCode/image-165.png)
+
+![alt text](../img/LeetCode/image-166.png)
+
+不难发现，博弈DP状态的巧妙之处，就在于接下来不管是哪一方做操作，这个状态看起来和A方还是B方都没有关系，仅仅只是接下来轮到他，需要思考同样的问题而已。找准状态，状态转移方程也就迎刃而解。
 
 # 13 复杂数据结构
 
