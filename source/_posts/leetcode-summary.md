@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-08-10 10:29:26
+updated: 2026-08-11 11:01:14
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -3589,6 +3589,12 @@ var numOfWays = function (n) {
 这道题20260806首刷，是一道脑筋急转弯问题，思路见下，还得多练：
 
 ![alt text](../img/LeetCode/image-162.png)
+
+## 9.19 LeetCode 3148 矩阵中的最大得分
+
+这道题20260811首刷，也是一道脑筋急转弯问题。我们只要想清楚脑筋急转弯的部分，就不难发现它实际上是一道二维前缀和的题目。值得二刷锻炼脑子。
+
+![alt text](../img/LeetCode/image-167.png)
 
 # 10 暴力与模拟
 
