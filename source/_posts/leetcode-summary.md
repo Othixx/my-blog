@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-08-16 16:42:06
+updated: 2026-08-28 10:31:46
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -4187,6 +4187,16 @@ var maximumLength = function (nums, k) {
 ![alt text](../img/LeetCode/image-166.png)
 
 不难发现，博弈DP状态的巧妙之处，就在于接下来不管是哪一方做操作，这个状态看起来和A方还是B方都没有关系，仅仅只是接下来轮到他，需要思考同样的问题而已。找准状态，状态转移方程也就迎刃而解。
+
+## 12.22 LeetCode 3122 使矩阵满足条件的最小操作次数
+
+本题20260828首刷，看着像是网格图DP的题，但是思路不那么的常规，甚至一开始有点脑筋急转弯，有点状态机DP的感觉，我们看下题解：
+
+![alt text](../img/LeetCode/image-168.png)
+
+![alt text](../img/LeetCode/image-169.png)
+
+一开始，如果你的思路直接想成dfs(i, j)就为我要找的网格图答案形式，那就错了。本题的状态定义还是十分的巧妙。
 
 # 13 复杂数据结构
 
