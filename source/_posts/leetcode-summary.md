@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-08-31 15:10:33
+updated: 2026-09-21 17:59:15
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -4205,6 +4205,12 @@ var maximumLength = function (nums, k) {
 ![alt text](../img/LeetCode/image-169.png)
 
 一开始，如果你的思路直接想成dfs(i, j)就为我要找的网格图答案形式，那就错了。本题的状态定义还是十分的巧妙。
+
+## 12.23 LeetCode 873 最长的斐波那契子序列的长度
+
+这道题20260921首刷。是一道非常经典的子序列DP问题，难点还是在于状态的定义上。下面给出题解：
+
+![alt text](../img/LeetCode/image-170.png)
 
 # 13 复杂数据结构
 
