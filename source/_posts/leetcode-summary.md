@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-09-21 17:59:15
+updated: 2026-09-23 18:01:48
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -2903,6 +2903,12 @@ var restoreMatrix = function (rowSum, colSum) {
 ![alt text](../img/LeetCode/image-137.png)
 
 这一类题没有什么技巧可言，全在于对题目的灵感。值得二刷。
+
+## 8.10 LeetCode 1147 段式回文
+
+本题20260923首刷，已经很久没有接触贪心的题，只能说是十分的巧妙，得多欣赏：
+
+![alt text](../img/LeetCode/image-171.png)
 
 # 9 技巧题、数学题
 
