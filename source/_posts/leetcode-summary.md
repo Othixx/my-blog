@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-09-23 18:01:48
+updated: 2026-09-26 11:54:31
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -4217,6 +4217,12 @@ var maximumLength = function (nums, k) {
 这道题20260921首刷。是一道非常经典的子序列DP问题，难点还是在于状态的定义上。下面给出题解：
 
 ![alt text](../img/LeetCode/image-170.png)
+
+## 12.24 LeetCode 1043 分隔数组以得到最大和
+
+这道题20260926首刷，难度还是在状态的定义上。个人认为一旦想清楚怎么定义状态，就能够很轻松实现：
+
+![alt text](../img/LeetCode/image-172.png)
 
 # 13 复杂数据结构
 
