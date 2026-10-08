@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-09-26 11:54:31
+updated: 2026-10-08 15:46:29
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -2909,6 +2909,14 @@ var restoreMatrix = function (rowSum, colSum) {
 本题20260923首刷，已经很久没有接触贪心的题，只能说是十分的巧妙，得多欣赏：
 
 ![alt text](../img/LeetCode/image-171.png)
+
+## 8.11 LeetCode 2673 使二叉树所有路径值相等的最小代价
+
+本题20261008首刷，非常的巧妙，这种题只能够多练习，多体会：
+
+![alt text](../img/LeetCode/image-173.png)
+
+![alt text](../img/LeetCode/image-174.png)
 
 # 9 技巧题、数学题
 
