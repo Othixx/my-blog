@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-10-09 17:18:22
+updated: 2026-10-15 19:47:12
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -1405,6 +1405,24 @@ System.out.println(str); // 'a'
 ## 0.10 Java 数组初始化与JS和C++的区别
 
 **请注意，对于Java语言而言，JVM在初始化`int`型数组时，每个元素会被默认的初始化为0，你无需手动再赋一遍值。而对JS或者C++而言，必须赋值为0才能保证数组初始化的正确。**
+
+# 0. Python 要点
+
+注意，下文中所有的代码都是基于Python3的。
+
+为什么要开始使用Python，一方面是因为AI发展迅速，论文中的代码几乎都是Python的，另外一点是正在准备的比赛支持Python但不支持JS。虽然亦可以用Java实现，但是Java用来刷题考虑的细节还是比较多，不如Python来的方便。
+
+## 0.1 Python中的map
+
+Python中的`map()`函数是一个内置函数，它可以对可迭代对象中的每个元素应用一个指定的函数，并返回一个新的迭代器。`map()`函数的示例如下：
+
+```python
+line = "3 5"
+parts = line.split()      # parts = ["3", "5"]
+res = map(int, parts)     # 对每个元素执行int("3"), int("5")
+a, b = res
+print(a + b) # 8
+```
 
 # 1. 哈希表与字符串、数组、双指针、滑动窗口、前缀和、差分
 
