@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-10-15 19:47:12
+updated: 2026-10-16 15:03:29
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -1422,6 +1422,19 @@ parts = line.split()      # parts = ["3", "5"]
 res = map(int, parts)     # 对每个元素执行int("3"), int("5")
 a, b = res
 print(a + b) # 8
+```
+
+## 0.2 Python 字符串切片
+
+这个其实有点像JS字符串中的`slice()`方法，但是，在Python中我们还可以指定步长，还可以倒着来取。
+
+例如：
+
+```python
+str = "hello"
+print(str[0:3]) # "hel"
+print(str[0:3:2]) # "hl"
+print(str[::-1]) # "olleh"，这个方法也常用来反转字符串，请注意由于会开辟新空间，因此时空复杂度都是O(n)的。
 ```
 
 # 1. 哈希表与字符串、数组、双指针、滑动窗口、前缀和、差分
