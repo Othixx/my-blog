@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-10-20 10:24:36
+updated: 2026-10-22 17:47:48
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -1412,6 +1412,8 @@ System.out.println(str); // 'a'
 
 为什么要开始使用Python，一方面是因为AI发展迅速，论文中的代码几乎都是Python的，另外一点是正在准备的比赛支持Python但不支持JS。虽然亦可以用Java实现，但是Java用来刷题考虑的细节还是比较多，不如Python来的方便。
 
+**请注意，Python中的if、elif、for、while等语句在写条件的时候，一般不需要加括号，这一点与其他编程语言有着不同。**
+
 ## 0.1 Python中的map
 
 Python中的`map()`函数是一个内置函数，它可以对可迭代对象中的每个元素应用一个指定的函数，并返回一个新的迭代器。`map()`函数的示例如下：
@@ -1521,6 +1523,50 @@ print(" ".join(map(str, arr)))  # 意思是用空格把字符串拼接在一起
 arr = [1, 2, 3]
 print(*arr)  # 输出: 1 2 3，这是最简单的输出方式
 ```
+
+## 0.7 Python 类
+
+Python的类和JS的很像，都是class关键字，构造函数：
+
+```python
+class Person:
+    def __init__(self, name):
+        self.name = name
+    def sayHi(self):
+        print(self.name)
+
+p = Person("abc")
+```
+
+我们和JS对照着看：
+
+```js
+class Person {
+  constructor(name) {
+    this.name = name
+  }
+  sayHi() {
+    console.log(this.name)
+  }
+}
+const p = new Person('abc')
+```
+
+#### 相似点
+
+1. 都用 `class` 定义类
+2. 都有一个专门的构造方法，创建实例的时候自动调用
+3. 都可以在构造里给实例挂属性，类里面写成员方法
+
+#### 关键不一样的地方（重点，写代码很容易踩坑）
+
+1. **Python 构造是 `__init__`，JS 是 `constructor`**
+2. **Python 方法第一个参数必须写 `self`（代表实例自己），JS 的 `this` 不用写在参数里**
+3. Python 没有 `new`，直接 `Person()` 就生成对象
+4. JS 的 `this` 绑定很灵活，容易变；Python 的 `self` 永远是当前实例，简单稳定
+5. Python 缩进决定代码块；JS 靠大括号 `{}`
+
+> 小总结：**语法外壳长得像，但是 self / this 的机制是最大的分水岭**。
 
 # 1. 哈希表与字符串、数组、双指针、滑动窗口、前缀和、差分
 
