@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-10-22 17:47:48
+updated: 2026-10-23 15:18:27
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -1568,6 +1568,110 @@ const p = new Person('abc')
 
 > 小总结：**语法外壳长得像，但是 self / this 的机制是最大的分水岭**。
 
+## 0.8 Python 函数
+
+我们在LeetCode中，经常会看到如下面的函数：
+
+```python
+class Solution:
+    def longestConsecutive(self, nums: list[int]) -> int:
+```
+
+实际上，Python并不要求我们给函数参数写上类型，但这只是一个提示，Python解释器也不会检查真正传入的参数到底是不是符合你定义的类型要求。所以我们在写算法比赛的时候，也常常会省略。
+
+## 0.9 Python set
+
+Python中的`set`是一个无序且不重复的集合类型，它可以用来存储多个元素，并且可以进行集合运算，如并集、交集、差集等。下面是一些常用的操作：
+
+```python
+s = set([1, 2, 3, 4, 5])  # 从列表创建集合，也可以使用大括号{}来创建集合，例：set_name = {value1, value2, value3}
+# 但是需要额外注意，空大括号{}创建的是一个字典，而不是一个集合。空集合的创建方式是：set()
+print(s)  # 输出: {1, 2, 3, 4, 5}
+```
+
+这个集合和JS中的set很像，几个常用方法我们再看一下：
+
+```python
+s.add(6)  # 添加元素
+print(s)  # 输出: {1, 2, 3, 4, 5, 6}
+
+print(len(s))  # 输出: 6，输出集合长度，请注意len是python的内置函数，不是set对象自身的方法
+
+s.remove(3)  # 删除元素，如果元素不存在，会抛出异常
+print(s)  # 输出: {1, 2, 4, 5, 6}
+
+s.clear()  # 清空集合
+print(s)  # 输出: set()
+```
+
+查找写法：
+
+```python
+print(1 in s)  # 输出: True
+print(6 in s)  # 输出: True
+```
+
+查找、增加、删除在平均情况下的时间复杂度都是O(1)，最坏情况可能退化到O(n)，我们在竞赛中一般用O(1)去分析。
+
+遍历：
+
+```python
+for element in s:
+    print(element)  # 输出: 1, 2, 3, 4, 5, 6
+```
+
+## 0.10 Python dict
+
+Python中的`dict`是一个键值对的数据结构，它提供了一种将键映射到值的方式。它就像是JS里面的`map`。下面是一个简单的例子：
+
+```python
+d = {'a': 1, 'b': 2, 'c': 3}
+print(d)  # 输出: {'a': 1, 'b': 2, 'c': 3}
+```
+
+接下来，举例一些常见的操作：
+
+```python
+# 查找元素
+d['a']  # 输出: 1
+d['b']  # 输出: 2
+d['c']  # 输出: 3
+
+# 添加元素
+d['d'] = 4
+print(d)  # 输出: {'a': 1, 'b': 2, 'c': 3, 'd': 4}
+
+# 删除元素
+del d['d']
+print(d)  # 输出: {'a': 1, 'b': 2, 'c': 3}
+
+# 修改元素
+d['a'] = 100
+print(d)  # 输出: {'a': 100, 'b': 2, 'c': 3}
+
+# 清空字典
+d.clear()
+print(d)  # 输出: {}，还是一样，set的话就会输出set()
+
+# 查找元素key是否存在
+print('a' in d)  # 输出: True
+print('d' in d)  # 输出: False
+
+# 遍历字典
+for key in d:
+    print(key)  # 输出: a, b, c
+
+# 遍历字典值
+for value in d.values():
+    print(value)  # 输出: 1, 2, 3
+
+# 遍历字典键值对
+for key in d:
+    print(key, d[key])  # 输出: a 1, b 2, c 3
+```
+
+同样的，查找、增加、删除在平均情况下的时间复杂度都是O(1)，最坏情况可能退化到O(n)，我们在竞赛中一般用O(1)去分析。
+
 # 1. 哈希表与字符串、数组、双指针、滑动窗口、前缀和、差分
 
 ## 1.1 滑动窗口
@@ -1698,7 +1802,7 @@ if (map.size >= diffNum) {
 
 ## 1.3 LeetCode 128 最长连续序列
 
-(20240909还是不会)
+（20240909还是不会）（三刷20261023还是不会）
 
 这个题需要掌握一个STL容器`unordered_set`。`unordered_set`是一个无序的集合，底层实现是哈希表。这个容器的插入、删除、查找操作的时间复杂度都是O(1)。
 
