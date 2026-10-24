@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-10-23 15:18:27
+updated: 2026-10-24 15:48:54
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -2231,6 +2231,8 @@ var maxPalindromesAfterOperations = function (words) {
 ## 2.1 链表倒序
 
 **本节基于LeetCode 92、206。**
+
+（20261024已能独立解决）
 
 针对链表倒序，使用迭代法。从头结点开始遍历，设置两个指针，curr和prev。curr指向当前节点，prev指向当前节点的前一个节点。每次迭代，将curr的next指向prev，然后prev和curr都向后移动一位。直到curr为空，prev就是新的头结点。同时，需要暂存curr的next节点，以免丢失。
 
