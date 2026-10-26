@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-10-24 15:48:54
+updated: 2026-10-26 11:27:32
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -1672,6 +1672,37 @@ for key in d:
 
 同样的，查找、增加、删除在平均情况下的时间复杂度都是O(1)，最坏情况可能退化到O(n)，我们在竞赛中一般用O(1)去分析。
 
+## 0.11 Python 堆
+
+在Python中，堆的实现是通过`heapq`模块来完成的。下面是一个简单的例子：
+
+```python
+import heapq
+
+heap = []
+# 1. 往堆里加元素，自动维持堆性质 O(logn)
+heapq.heappush(heap, val)
+
+# 2. 弹出堆顶（最小的那个），O(logn)
+min_val = heapq.heappop(heap)
+
+# 3. 原地把列表变成堆！【heapify 重点！】 O(n)，不是O(nlogn)
+arr = [3,1,4,2]
+heapq.heapify(arr)   # 直接把arr改成堆，原地修改，不返回新数组
+
+# 4. 看堆顶最小值，不弹出
+arr[0]
+
+# 5. heappushpop：先push，再pop最小，O(logn)
+res = heapq.heappushpop(heap, x)
+
+# 6. heapreplace：先pop最小，再push x
+res = heapq.heapreplace(heap, x)
+```
+
+- 需要注意的是，Python只有小顶堆，没有大顶堆。如果想要模拟大顶堆，只需要在元素上取负数即可。
+- 另外，Python中没有堆的数据结构，**底层它永远就是一个普通 list，只是这个 list 满足堆的存储规则，我们把它叫 “堆”。heapq 不会创造一个新的特殊类型对象。**
+
 # 1. 哈希表与字符串、数组、双指针、滑动窗口、前缀和、差分
 
 ## 1.1 滑动窗口
@@ -2816,6 +2847,8 @@ long long ans = 0;    // 存储答案
 ## 6.2 Leetcode 215 数组中第K大的元素——堆的灵活运用
 
 **注意：堆排很常见也很重要，很重要，很重要，务必掌握。** 本题采用建立大顶堆的方法。这题十分经典。
+
+但是实际上，这个题我在20261226二刷的时候发现，官方给的两个题解其实都不满足复杂度要求，至于怎么做还有待后续思考，建堆还是远远不够的。
 
 ## 6.3 Leetcode 295 数据流中的中位数
 
