@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-10-27 10:11:30
+updated: 2026-11-01 21:32:51
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -1712,6 +1712,15 @@ a = 10
 b = 5
 s = f"数字是 {a + b}"
 print(s)  # 输出: 数字是 15
+```
+
+## 0.13 Python 中的无穷大和无穷小
+
+在Python中，我们可以用`float('inf')`来表示无穷大，用`float('-inf')`来表示无穷小。请注意，当我们把它用来和一个整数比大小并返回大的或者小的那个数时，会返回的是整数而不是浮点数，例如下面的例子：
+
+```python
+print(max(1, 2, 3, float('-inf')))  # 输出: 3
+print(min(1, 2, 3, float('inf')))  # 输出: 1
 ```
 
 # 1. 哈希表与字符串、数组、双指针、滑动窗口、前缀和、差分
