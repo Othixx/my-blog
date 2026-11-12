@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-11-01 21:32:51
+updated: 2026-11-12 16:33:05
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -1722,6 +1722,42 @@ print(s)  # 输出: 数字是 15
 print(max(1, 2, 3, float('-inf')))  # 输出: 3
 print(min(1, 2, 3, float('inf')))  # 输出: 1
 ```
+
+## 0.14 Python 中的常见函数——最大值、最小值、abs
+
+这些函数都是内置的，我们不需要导入，我们直接使用就行，西面来看个例子：
+
+```python
+a = [1, 2, 3, 4, 5]
+print(max(a))  # 输出: 5
+print(min(a))  # 输出: 1
+print(abs(-10))  # 输出: 10
+```
+
+## 0.15 Python 开平方
+
+我们可以使用`math.sqrt()`函数来计算一个数的平方根，返回的是一个浮点数。另外，我们可以使用`math.isqrt()`来获取一个数的整数平方根（向下取整）。下面是一个简单的例子：
+
+```python
+import math
+print(math.sqrt(9))  # 输出: 3.0
+print(math.isqrt(9))  # 输出: 3
+```
+
+## 0.16 Python 排序
+
+Python的排序和JS的略有区别，我们来看一个最简单的例子：
+
+```python
+nums = [-5, 3, -2, 7]
+# 需求：按绝对值从小到大排
+nums.sort(key=lambda x: abs(x))
+print(nums)  # [-2, 3, -5, 7]
+```
+
+![alt text](../img/LeetCode/image-181.png)
+
+![alt text](../img/LeetCode/image-182.png)
 
 # 1. 哈希表与字符串、数组、双指针、滑动窗口、前缀和、差分
 
