@@ -1,7 +1,7 @@
 ---
 title: LeetCode 刷题汇总笔记
 date: 2024-07-15 10:00:00
-updated: 2026-11-19 17:20:34
+updated: 2026-11-23 17:03:03
 tags: [LeetCode,算法,刷题笔记]
 categories: 算法刷题
 description: Othixx的算法指南
@@ -1672,6 +1672,38 @@ for key in d:
 
 同样的，查找、增加、删除在平均情况下的时间复杂度都是O(1)，最坏情况可能退化到O(n)，我们在竞赛中一般用O(1)去分析。
 
+### 0.10.1 defaultdict
+
+`defaultdict`是Python标准库`collections`模块中的一个类，它是对普通字典（dict）的一个子类，提供了一个默认值的功能。当我们访问一个不存在的键时，`defaultdict`会自动为该键创建一个默认值，而不是抛出KeyError异常。
+
+我们先来看一下普通字典：
+
+```python
+d = {}
+print(d['a'])   # 报错 KeyError: 'a'
+```
+
+作为对比，我们再来看一下defaultdict：
+
+```python
+from collections import defaultdict
+d = defaultdict(int)
+print(d['a'])   # 不会报错，直接返回 0
+d['a'] += 1
+print(d['a'])   # 变成 1
+```
+
+再来看一个defaultdict括号里东西的说明：
+
+```python
+defaultdict(int)   # 不存在key → int() → 0
+defaultdict(str)   # 不存在key → str() → 空字符串 ""
+defaultdict(list)  # 不存在key → list() → 空列表 []
+defaultdict(set)   # 不存在key → set() → 空集合 set()
+# 建议括号里必须有参数，如果按照下面的写法，会存在各种各样的问题：
+d = defaultdict()
+```
+
 ## 0.11 Python 堆
 
 在Python中，堆的实现是通过`heapq`模块来完成的。下面是一个简单的例子：
@@ -1780,6 +1812,8 @@ print(nums)  # [-2, 3, -5, 7]
 #### 1.1.1.2 LeetCode 3325 字符至少出现K次的子字符串 I
 
 本题20251201首刷，没什么难度，但是你过若干天从头写下来我觉得不容易。实现上我觉得有点反直觉，未来可以二刷。
+
+本题在20261123时二刷时发现，仍旧是有些反直觉，虽然我能用直觉方法做出来，但是反直觉方法的代码更加简洁清楚。
 
 #### 1.1.1.3 LeetCode 2799 统计完全子数组的数目
 
